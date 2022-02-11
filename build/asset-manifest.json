@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Cat-breed-search/static/css/main.073c9b0a.css",
+    "main.js": "/Cat-breed-search/static/js/main.1171c096.js",
+    "static/js/787.74741165.chunk.js": "/Cat-breed-search/static/js/787.74741165.chunk.js",
+    "static/media/logo.svg": "/Cat-breed-search/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/Cat-breed-search/index.html",
+    "main.073c9b0a.css.map": "/Cat-breed-search/static/css/main.073c9b0a.css.map",
+    "main.1171c096.js.map": "/Cat-breed-search/static/js/main.1171c096.js.map",
+    "787.74741165.chunk.js.map": "/Cat-breed-search/static/js/787.74741165.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.1171c096.js"
+  ]
+}
