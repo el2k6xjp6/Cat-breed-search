@@ -69,7 +69,7 @@ function App() {
         queryString={queryString}
       />
 
-      {queryString.length !== 0 && (
+      {sortedBreeds.length !== 0 && (
         <SortBar selection={sortMethod} handleClick={setSortMethod} />
       )}
 
