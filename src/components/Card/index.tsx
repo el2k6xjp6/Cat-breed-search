@@ -5,9 +5,15 @@ import { fetchTheCatImageById } from "../../utils";
 
 interface CardType {
   name: string;
-  weight: { metric: string };
-  life_span: string;
-  reference_image_id: string;
+  lifeSpan: {
+    low: number;
+    high: number;
+  };
+  weight: {
+    low: number;
+    high: number;
+  };
+  referenceImageId: string;
 }
 
 function Card(props: CardType) {
@@ -15,11 +21,11 @@ function Card(props: CardType) {
 
   useEffect(() => {
     (async () => {
-      const data = await fetchTheCatImageById(props.reference_image_id);
+      const data = await fetchTheCatImageById(props.referenceImageId);
       setImageUrl(data.url);
       setFetching(false);
     })();
-  }, [props.reference_image_id]);
+  }, [props.referenceImageId]);
 
   const [imageUrl, setImageUrl] = useState<string>("");
 
@@ -27,8 +33,12 @@ function Card(props: CardType) {
     <Container>
       <LazyImage isFetching={isFetching} actualSrc={imageUrl} />
       <Name>{props.name}</Name>
-      <LifeSpan>Lifespan: {props.weight.metric} kilograms</LifeSpan>
-      <Weight>Weight: {props.life_span} years</Weight>
+      <LifeSpan>
+        Lifespan: {props.weight.low} - {props.weight.high} kilograms
+      </LifeSpan>
+      <Weight>
+        Weight: {props.lifeSpan.low} - {props.lifeSpan.high} years
+      </Weight>
     </Container>
   );
 }

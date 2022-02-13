@@ -2,8 +2,11 @@ import styled from "styled-components";
 
 export const DropDownContainer = styled.div`
   cursor: pointer;
-  width: 200px;
+  width: 250px;
   height: 40px;
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 export const DropDownHeader = styled.div`

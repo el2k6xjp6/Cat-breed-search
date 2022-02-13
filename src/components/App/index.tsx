@@ -2,13 +2,13 @@ import { useEffect, useState, useMemo } from "react";
 import { Breed } from "../../types";
 import Card from "../Card";
 import SearchInput from "../SearchInput";
-import SearchBar from "../SortBar";
+import SortBar from "../SortBar";
 import { SORT_METHODS } from "../../constants";
 import { debounce, getSortFunction, fetchTheCatApiByName } from "../../utils";
 import { Container, Header, CardContainer } from "./styles";
 
 function App() {
-  const [queryString, setQueryString] = useState<string>("ame");
+  const [queryString, setQueryString] = useState<string>("");
   const [error, setError] = useState<Error | null>(null);
   const [breeds, setBreeds] = useState<Breed[]>([]);
   const [sortMethod, setSortMethod] = useState<number>(-1);
@@ -57,22 +57,22 @@ function App() {
   const sortedBreeds = useMemo(() => {
     if (sortMethod < 0 || sortMethod >= SORT_METHODS.length) return breeds;
     const sortedBreeds = breeds.sort(getSortFunction(sortMethod));
-    if (sortMethod % 2 === 1) {
-      sortedBreeds.reverse();
-    }
     return sortedBreeds;
   }, [breeds, sortMethod]);
 
   return (
     <Container>
       <Header>Cat Breeds</Header>
+
       <SearchInput
         handleQueryInput={handleQueryInput}
         queryString={queryString}
       />
+
       {queryString.length !== 0 && (
-        <SearchBar selection={sortMethod} handleClick={setSortMethod} />
+        <SortBar selection={sortMethod} handleClick={setSortMethod} />
       )}
+
       <CardContainer>
         {sortedBreeds.map((breed: Breed) => (
           <Card {...breed} />

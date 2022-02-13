@@ -2,7 +2,7 @@
 
 exports[`App snapshot 1`] = `
 .c0 {
-  width: 300px;
+  width: calc(25% - 22px);
   margin: 10px 10px;
   height: 400px;
   border-radius: 24px;
@@ -38,6 +38,25 @@ exports[`App snapshot 1`] = `
   border-top-right-radius: 24px;
 }
 
+@media only screen and (max-width:480px) {
+  .c0 {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+@media only screen and (min-width:481px) and (max-width:900px) {
+  .c0 {
+    width: calc(50% - 22px);
+  }
+}
+
+@media only screen and (min-width:901px) and (max-width:1200px) {
+  .c0 {
+    width: calc(33% - 22px);
+  }
+}
+
 <div
   className="c0"
 >
@@ -54,14 +73,18 @@ exports[`App snapshot 1`] = `
     className="c2 c4"
   >
     Lifespan: 
-    1-2
+    1
+     - 
+    2
      kilograms
   </div>
   <div
     className="c2 c5"
   >
     Weight: 
-    3-4
+    3
+     - 
+    4
      years
   </div>
 </div>

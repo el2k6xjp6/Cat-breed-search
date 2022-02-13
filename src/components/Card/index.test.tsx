@@ -4,9 +4,9 @@ import renderer from "react-test-renderer";
 
 const mockProps = {
   name: "test",
-  weight: { metric: "1-2" },
-  life_span: "3-4",
-  reference_image_id: "",
+  weight: { low: 1, high: 2 },
+  lifeSpan: { low: 3, high: 4 },
+  referenceImageId: "",
 };
 
 describe("App", () => {

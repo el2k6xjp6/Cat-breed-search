@@ -1,4 +1,4 @@
-import { Breed } from "./types";
+import { Breed, BreedApi } from "./types";
 import axios from "axios";
 import { THE_CAT_API_URL } from "./constants";
 
@@ -11,7 +11,28 @@ export const fetchTheCatApiByName = async (name: string) => {
       q: name,
     },
   });
-  return data;
+  return data.map((breed: BreedApi) => {
+    const {
+      name,
+      reference_image_id,
+      life_span,
+      weight: { metric },
+    } = breed;
+    const lifeSpan = life_span.split(" - ");
+    const weight = metric.split(" - ");
+    return {
+      name,
+      referenceImageId: reference_image_id,
+      lifeSpan: {
+        low: +lifeSpan[0],
+        high: +lifeSpan[1],
+      },
+      weight: {
+        low: +weight[0],
+        high: +weight[1],
+      },
+    };
+  });
 };
 
 export const fetchTheCatImageById = async (id: string) => {
@@ -36,15 +57,43 @@ export const debounce = (func: Function, wait: number) => {
   };
 };
 
-export const sortByName = (a: Breed, b: Breed) => {
+export const sortByNameAtoZ = (a: Breed, b: Breed) => {
   return a.name.localeCompare(b.name);
+};
+
+export const sortByNameZtoA = (a: Breed, b: Breed) => {
+  return b.name.localeCompare(a.name);
+};
+
+export const sortByWeightLowToHigh = (a: Breed, b: Breed) => {
+  return a.weight.low - b.weight.low;
+};
+
+export const sortByWeightHighToLow = (a: Breed, b: Breed) => {
+  return b.weight.high - a.weight.high;
+};
+
+export const sortByLifeSpanLowToHigh = (a: Breed, b: Breed) => {
+  return a.lifeSpan.low - b.lifeSpan.low;
+};
+
+export const sortByLifeSpanHighToLow = (a: Breed, b: Breed) => {
+  return b.lifeSpan.high - a.lifeSpan.high;
 };
 
 export const getSortFunction = (sortMethod: number) => {
   switch (sortMethod) {
     case 0:
-      return sortByName;
+      return sortByNameAtoZ;
     case 1:
-      return sortByName;
+      return sortByNameZtoA;
+    case 2:
+      return sortByWeightLowToHigh;
+    case 3:
+      return sortByWeightHighToLow;
+    case 4:
+      return sortByLifeSpanLowToHigh;
+    case 5:
+      return sortByLifeSpanHighToLow;
   }
 };

@@ -6,4 +6,7 @@ export const Container = styled.div`
   margin: 10px;
   display: flex;
   align-items: center;
+  @media only screen and (max-width: 480px) {
+    margin: 0;
+  }
 `;

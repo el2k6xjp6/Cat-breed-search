@@ -12,7 +12,6 @@ export const Header = styled.h1`
 export const CardContainer = styled.div`
   margin-top: 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 `;

@@ -1,4 +1,3 @@
-import React from "react";
 import DropDown from "../DropDown";
 import { SORT_METHODS, SORT_METHOD_OPTIONS } from "../../constants";
 import { Container } from "./styles";
@@ -8,7 +7,7 @@ interface Props {
   handleClick: (value: number) => void;
 }
 
-function SearchBar(props: Props) {
+function SortBar(props: Props) {
   return (
     <Container>
       <DropDown
@@ -21,4 +20,4 @@ function SearchBar(props: Props) {
   );
 }
 
-export default SearchBar;
+export default SortBar;
