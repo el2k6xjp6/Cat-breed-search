@@ -1,52 +1,33 @@
 import { useEffect, useState, useMemo } from "react";
-import axios from "axios";
 import { Breed } from "../../types";
 import Card from "../Card";
-import SearchIcon from "../SearchIcon";
+import SearchInput from "../SearchInput";
 import SearchBar from "../SortBar";
 import { SORT_METHODS } from "../../constants";
-import { debounce, getSortFunction } from "../../utils";
-import {
-  Container,
-  Header,
-  InputContainer,
-  Input,
-  CardContainer,
-} from "./styles";
+import { debounce, getSortFunction, fetchTheCatApiByName } from "../../utils";
+import { Container, Header, CardContainer } from "./styles";
 
 function App() {
-  const [queryString, setQueryString] = useState<string>("");
+  const [queryString, setQueryString] = useState<string>("ame");
+  const [error, setError] = useState<Error | null>(null);
   const [breeds, setBreeds] = useState<Breed[]>([]);
   const [sortMethod, setSortMethod] = useState<number>(-1);
 
   const fetchApiWithDebounce = useMemo(
     () =>
-      debounce(
-        (query: string | Breed[]) =>
-          axios
-            .get("https://api.thecatapi.com/v1/breeds/search", {
-              headers: {
-                "x-api-key": process.env.REACT_APP_X_API_KEY as string,
-              },
-              params: {
-                q: query,
-              },
-            })
-            .then((res) => {
-              setBreeds([...res.data]);
-            }),
-        1000
-      ),
+      debounce(async (query: string) => {
+        try {
+          const data = await fetchTheCatApiByName(query);
+          setBreeds([...data]);
+        } catch (err) {
+          setError(err as Error);
+        }
+      }, 1000),
     []
   );
 
   const updateResultWithDebounce = useMemo(
-    () =>
-      debounce((value: string | Breed[]) => {
-        if (typeof value !== "string") {
-          setBreeds(value);
-        }
-      }, 1000),
+    () => debounce((value: Breed[]) => setBreeds(value), 1000),
     []
   );
 
@@ -55,9 +36,19 @@ function App() {
       updateResultWithDebounce([]);
     }
     if (queryString.length >= 3) {
-      fetchApiWithDebounce(queryString);
+      try {
+        fetchApiWithDebounce(queryString);
+      } catch (err) {
+        throw err;
+      }
     }
   }, [queryString, updateResultWithDebounce, fetchApiWithDebounce]);
+
+  useEffect(() => {
+    if (error != null) {
+      throw error;
+    }
+  }, [error]);
 
   const handleQueryInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQueryString(event.target.value);
@@ -75,15 +66,10 @@ function App() {
   return (
     <Container>
       <Header>Cat Breeds</Header>
-      <InputContainer>
-        <SearchIcon />
-        <Input
-          onChange={handleQueryInput}
-          value={queryString}
-          type="text"
-          placeholder="The name, or part of the name."
-        />
-      </InputContainer>
+      <SearchInput
+        handleQueryInput={handleQueryInput}
+        queryString={queryString}
+      />
       {queryString.length !== 0 && (
         <SearchBar selection={sortMethod} handleClick={setSortMethod} />
       )}

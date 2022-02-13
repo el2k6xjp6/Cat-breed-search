@@ -1,5 +1,4 @@
-import React from "react";
-import { ListItem, ListItemText } from "../styles";
+import { ListItem, ListItemText } from "./styles";
 
 export type optionType = {
   text: string;
@@ -15,7 +14,12 @@ type DropDownListProps = {
 const Item = ({ option, index, onOptionClicked }: DropDownListProps) => {
   const { text, value } = option;
   return (
-    <ListItem onClick={() => onOptionClicked(option)} key={index} value={value}>
+    <ListItem
+      id={`option ${index}`}
+      onClick={() => onOptionClicked(option)}
+      key={index}
+      value={value}
+    >
       <ListItemText>{text}</ListItemText>
     </ListItem>
   );

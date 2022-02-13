@@ -1,23 +1,42 @@
 import { Breed } from "./types";
+import axios from "axios";
+import { THE_CAT_API_URL } from "./constants";
 
-export const debounce = (
-  func: (arg: string | Breed[]) => void,
-  wait: number
-) => {
+export const fetchTheCatApiByName = async (name: string) => {
+  const { data } = await axios.get(THE_CAT_API_URL + "/breeds/search", {
+    headers: {
+      "x-api-key": process.env.REACT_APP_X_API_KEY as string,
+    },
+    params: {
+      q: name,
+    },
+  });
+  return data;
+};
+
+export const fetchTheCatImageById = async (id: string) => {
+  const { data } = await axios.get(THE_CAT_API_URL + "/images/" + id, {
+    headers: {
+      "x-api-key": process.env.REACT_APP_X_API_KEY as string,
+    },
+  });
+  return data;
+};
+
+export const debounce = (func: Function, wait: number) => {
   let timeout: NodeJS.Timeout;
 
-  return function executedFunction(arg: string | Breed[]) {
+  return (arg: any) => {
     const later = () => {
       clearTimeout(timeout);
       func(arg);
     };
-
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
   };
 };
 
-const sortByName = (a: Breed, b: Breed) => {
+export const sortByName = (a: Breed, b: Breed) => {
   return a.name.localeCompare(b.name);
 };
 

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 import {
   DropDownContainer,
   DropDownHeader,
@@ -15,11 +15,12 @@ interface Props {
   options: Array<optionType>;
   placeHolder: string;
   handleOptionChange: (value: number) => void;
+  validateSpy?: () => void;
 }
 
 function DropDown(props: Props) {
   const dropdownRef = useRef() as React.RefObject<HTMLDivElement>;
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = React.useState(false);
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
@@ -43,6 +44,9 @@ function DropDown(props: Props) {
 
   const toggling = (): void => setToggle(!toggle);
   const onOptionClicked = (option: optionType) => {
+    if (props.validateSpy != null) {
+      props.validateSpy();
+    }
     const { value } = option;
     setToggle(false);
     props.handleOptionChange(value);
@@ -50,19 +54,22 @@ function DropDown(props: Props) {
 
   return (
     <DropDownContainer ref={dropdownRef}>
-      <DropDownHeader onClick={toggling}>
+      <DropDownHeader id="DropDownHeader" onClick={toggling}>
         {props.selectedText == null ? (
           <Placeholder>{props.placeHolder}</Placeholder>
         ) : (
           <HeaderText>{props.selectedText}</HeaderText>
         )}
-        <Arrow isOpen={toggle}>▼</Arrow>
+        <Arrow id="DropDownArrow" isOpen={toggle}>
+          ▼
+        </Arrow>
       </DropDownHeader>
       {toggle && (
         <DropDownListContainer>
           <DropDownList>
             {props.options.map((option: optionType, index: number) => (
               <Item
+                key={"item-" + index}
                 option={option}
                 index={index}
                 onOptionClicked={onOptionClicked}

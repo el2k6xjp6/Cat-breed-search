@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Container, Image, Name, LifeSpan, Weight } from "./styles";
+import { Container, Name, LifeSpan, Weight } from "./styles";
+import LazyImage from "./LazyImage";
+import { fetchTheCatImageById } from "../../utils";
 
 interface CardType {
   name: string;
@@ -10,17 +11,13 @@ interface CardType {
 }
 
 function Card(props: CardType) {
+  const [isFetching, setFetching] = React.useState<boolean>(true);
+
   useEffect(() => {
     (async () => {
-      const res = await axios.get(
-        "https://api.thecatapi.com/v1/images/" + props.reference_image_id,
-        {
-          headers: {
-            "x-api-key": process.env.REACT_APP_X_API_KEY as string,
-          },
-        }
-      );
-      setImageUrl(res.data.url);
+      const data = await fetchTheCatImageById(props.reference_image_id);
+      setImageUrl(data.url);
+      setFetching(false);
     })();
   }, [props.reference_image_id]);
 
@@ -28,7 +25,7 @@ function Card(props: CardType) {
 
   return (
     <Container>
-      <Image src={imageUrl} alt="" />
+      <LazyImage isFetching={isFetching} actualSrc={imageUrl} />
       <Name>{props.name}</Name>
       <LifeSpan>Lifespan: {props.weight.metric} kilograms</LifeSpan>
       <Weight>Weight: {props.life_span} years</Weight>

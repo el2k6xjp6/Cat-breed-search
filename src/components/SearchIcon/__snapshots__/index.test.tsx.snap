@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchIcon component snapshot 1`] = `
+.c0 {
+  height: 30px;
+  width: 30px;
+  margin-left: 10px;
+}
+
+<svg
+  className="c0"
+>
+  <circle
+    cx="12"
+    cy="12"
+    fill="white"
+    r="8"
+    stroke="black"
+    strokeWidth="3"
+  />
+  <line
+    stroke="black"
+    strokeWidth="3px"
+    x1="18"
+    x2="26"
+    y1="18"
+    y2="26"
+  />
+</svg>
+`;

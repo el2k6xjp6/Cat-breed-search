@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test DropDown Snapshot for DropDown 1`] = `
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 16px;
+  height: 36px;
+  line-height: 36px;
+  list-style-type: none;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.c1:hover {
+  background: #dddddd;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .c0:hover .c2 {
+    color: black;
+  }
+}
+
+<li
+  className="c0 c1"
+  id="option 0"
+  onClick={[Function]}
+  value={0}
+>
+  <div
+    className="c2 "
+  >
+    test
+  </div>
+</li>
+`;

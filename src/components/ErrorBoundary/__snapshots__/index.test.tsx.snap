@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorBoundary component snapshot with error 1`] = `
+<div
+  className="sc-bdvvtL bKoqVk"
+>
+  <div
+    className="sc-gsDKAQ ecILOD"
+  >
+    <img
+      alt="Error"
+      className="sc-dkPtRN fNFRLD"
+      src="Error.svg"
+    />
+    <h1
+      className="sc-hKwDye iJFtxk"
+    >
+      Something went wrong.
+    </h1>
+  </div>
+</div>
+`;
+
+exports[`ErrorBoundary component snapshot without error 1`] = `<div />`;

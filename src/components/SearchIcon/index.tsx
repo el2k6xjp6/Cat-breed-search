@@ -9,10 +9,10 @@ function SearchIcon() {
         cy="12"
         r="8"
         stroke="black"
-        stroke-width="3"
+        strokeWidth="3"
         fill="white"
       />
-      <line x1="18" y1="18" x2="26" y2="26" stroke="black" stroke-width="3px" />
+      <line x1="18" y1="18" x2="26" y2="26" stroke="black" strokeWidth="3px" />
     </Svg>
   );
 }
