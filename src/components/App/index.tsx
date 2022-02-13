@@ -50,15 +50,20 @@ function App() {
     }
   }, [error]);
 
-  const handleQueryInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQueryString(event.target.value);
-  };
-
   const sortedBreeds = useMemo(() => {
     if (sortMethod < 0 || sortMethod >= SORT_METHODS.length) return breeds;
     const sortedBreeds = breeds.sort(getSortFunction(sortMethod));
     return sortedBreeds;
   }, [breeds, sortMethod]);
+
+  const handleOptionChange = useMemo(() => setSortMethod, []);
+
+  const handleQueryInput = useMemo(
+    () => (event: React.ChangeEvent<HTMLInputElement>) => {
+      setQueryString(event.target.value);
+    },
+    []
+  );
 
   return (
     <Container>
@@ -70,7 +75,7 @@ function App() {
       />
 
       {sortedBreeds.length !== 0 && (
-        <SortBar selection={sortMethod} handleClick={setSortMethod} />
+        <SortBar selection={sortMethod} handleClick={handleOptionChange} />
       )}
 
       <CardContainer>

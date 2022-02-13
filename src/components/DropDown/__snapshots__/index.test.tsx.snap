@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test DropDown Snapshot for DropDown close 1`] = `
+exports[`test DropDown Snapshot for closing DropDown 1`] = `
 .c0 {
   cursor: pointer;
   width: 250px;
@@ -76,7 +76,7 @@ exports[`test DropDown Snapshot for DropDown close 1`] = `
 </div>
 `;
 
-exports[`test DropDown Snapshot for DropDown open 1`] = `
+exports[`test DropDown Snapshot for opening DropDown 1`] = `
 .c0 {
   cursor: pointer;
   width: 250px;

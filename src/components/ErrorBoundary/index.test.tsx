@@ -1,8 +1,8 @@
 import ErrorBoundary from ".";
 import renderer from "react-test-renderer";
 
-describe("ErrorBoundary component", () => {
-  test("snapshot without error", () => {
+describe("ErrorBoundary", () => {
+  test("snapshot for ErrorBoundary without error", () => {
     const tree = renderer
       .create(
         <ErrorBoundary>
@@ -13,7 +13,7 @@ describe("ErrorBoundary component", () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test("snapshot with error", () => {
+  test("snapshot for ErrorBoundary with error", () => {
     const ThrowError = () => {
       throw new Error("test");
     };

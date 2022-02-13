@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App snapshot 1`] = `
+exports[`App snapshot for App 1`] = `
 .c2 {
   border: 1px solid #5f6368;
   border-radius: 24px;

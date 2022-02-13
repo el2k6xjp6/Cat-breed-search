@@ -2,8 +2,8 @@ import SortBar from ".";
 import "jest-styled-components";
 import renderer from "react-test-renderer";
 
-describe("App", () => {
-  test("snapshot", () => {
+describe("SortBar", () => {
+  test("snapshot for SortBar", () => {
     const mockProps = {
       selection: -1,
       handleClick: jest.fn,

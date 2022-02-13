@@ -12,12 +12,12 @@ describe("test DropDown", () => {
     handleOptionChange: jest.fn(),
   };
 
-  test("Snapshot for DropDown close", () => {
+  test("Snapshot for closing DropDown", () => {
     const tree = renderer.create(<DropDown {...mockProps} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  test("Snapshot for DropDown open", () => {
+  test("Snapshot for opening DropDown", () => {
     const setState = jest.fn();
     const useStateSpy = jest.spyOn(React, "useState");
     useStateSpy.mockImplementation(() => [true, setState]);

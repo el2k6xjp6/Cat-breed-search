@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ErrorBoundary component snapshot with error 1`] = `
+exports[`ErrorBoundary snapshot for ErrorBoundary with error 1`] = `
 <div
   className="sc-bdvvtL bKoqVk"
 >
@@ -21,4 +21,4 @@ exports[`ErrorBoundary component snapshot with error 1`] = `
 </div>
 `;
 
-exports[`ErrorBoundary component snapshot without error 1`] = `<div />`;
+exports[`ErrorBoundary snapshot for ErrorBoundary without error 1`] = `<div />`;

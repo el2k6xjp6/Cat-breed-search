@@ -8,7 +8,7 @@ const mockProps = {
 };
 
 describe("LazyImage", () => {
-  test("snapshot", () => {
+  test("snapshot for LazyImage", () => {
     const tree = renderer.create(<LazyImage {...mockProps} />).toJSON();
     expect(tree).toMatchSnapshot();
   });

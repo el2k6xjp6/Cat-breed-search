@@ -9,8 +9,8 @@ const mockProps = {
   referenceImageId: "",
 };
 
-describe("App", () => {
-  test("snapshot", () => {
+describe("Card", () => {
+  test("snapshot for Card", () => {
     const tree = renderer.create(<Card {...mockProps} />).toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -9,7 +9,7 @@ const mockProps = {
   handleQueryInput: jest.fn(),
 };
 
-describe("test SearchInput", () => {
+describe("SearchInput", () => {
   test("Snapshot for SearchInput", () => {
     const tree = renderer.create(<SearchInput {...mockProps} />).toJSON();
     expect(tree).toMatchSnapshot();

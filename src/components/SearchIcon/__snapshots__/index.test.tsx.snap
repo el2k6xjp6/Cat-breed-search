@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchIcon component snapshot 1`] = `
+exports[`SearchIcon snapshot for SearchIcon 1`] = `
 .c0 {
   height: 30px;
   width: 30px;

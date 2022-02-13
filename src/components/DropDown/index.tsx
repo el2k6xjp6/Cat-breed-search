@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from "react";
+import React, { useRef, useEffect, useCallback, useMemo } from "react";
 import {
   DropDownContainer,
   DropDownHeader,
@@ -43,14 +43,18 @@ function DropDown(props: Props) {
   }, [handleClickOutside]);
 
   const toggling = (): void => setToggle(!toggle);
-  const onOptionClicked = (option: optionType) => {
-    if (props.validateSpy != null) {
-      props.validateSpy();
-    }
-    const { value } = option;
-    setToggle(false);
-    props.handleOptionChange(value);
-  };
+
+  const onOptionClicked = useMemo(
+    () => (option: optionType) => {
+      if (props.validateSpy != null) {
+        props.validateSpy();
+      }
+      const { value } = option;
+      setToggle(false);
+      props.handleOptionChange(value);
+    },
+    []
+  );
 
   return (
     <DropDownContainer ref={dropdownRef}>
@@ -82,4 +86,4 @@ function DropDown(props: Props) {
   );
 }
 
-export default DropDown;
+export default React.memo(DropDown);
