@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/Cat-breed-search/static/js/main.b891ce68.js",
-    "static/js/787.74741165.chunk.js": "/Cat-breed-search/static/js/787.74741165.chunk.js",
+    "main.js": "/Cat-breed-search/static/js/main.7c5edc4e.js",
+    "static/media/Spinner.gif": "/Cat-breed-search/static/media/Spinner.210bf75212299cf737bc.gif",
+    "static/media/Error.svg": "/Cat-breed-search/static/media/Error.7194ac6341b42f383f8cecb430dd026c.svg",
     "index.html": "/Cat-breed-search/index.html",
-    "main.b891ce68.js.map": "/Cat-breed-search/static/js/main.b891ce68.js.map",
-    "787.74741165.chunk.js.map": "/Cat-breed-search/static/js/787.74741165.chunk.js.map"
+    "main.7c5edc4e.js.map": "/Cat-breed-search/static/js/main.7c5edc4e.js.map"
   },
   "entrypoints": [
-    "static/js/main.b891ce68.js"
+    "static/js/main.7c5edc4e.js"
   ]
 }
