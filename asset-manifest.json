@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/Cat-breed-search/static/js/main.7c5edc4e.js",
+    "main.js": "/Cat-breed-search/static/js/main.0ed83f07.js",
     "static/media/Spinner.gif": "/Cat-breed-search/static/media/Spinner.210bf75212299cf737bc.gif",
     "static/media/Error.svg": "/Cat-breed-search/static/media/Error.7194ac6341b42f383f8cecb430dd026c.svg",
     "index.html": "/Cat-breed-search/index.html",
-    "main.7c5edc4e.js.map": "/Cat-breed-search/static/js/main.7c5edc4e.js.map"
+    "main.0ed83f07.js.map": "/Cat-breed-search/static/js/main.0ed83f07.js.map"
   },
   "entrypoints": [
-    "static/js/main.7c5edc4e.js"
+    "static/js/main.0ed83f07.js"
   ]
 }
